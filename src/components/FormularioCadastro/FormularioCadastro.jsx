@@ -4,8 +4,14 @@ class FormularioCadastro extends Component {
 
   constructor(props){
     super(props);
+
     this.titulo ="";
     this.texto ="";
+    this.categoria = "Sem Categoria";
+  }
+  _handleMudancaCategoria(evento){
+    evento.stopPropagation();
+    this.categoria = evento.target.value;
   }
 
   _handleMudancaTitulo(evento){
@@ -21,21 +27,32 @@ class FormularioCadastro extends Component {
   _criarNota(evento){
     evento.preventDefault();
     evento.stopPropagation();
-    this.props.criarNota(this.titulo, this.texto);
+    // Ao criar a nota devo passar atraves do this. todos os atributos do constructor da class
+    this.props.criarNota(this.titulo, this.texto, this.categoria);
     
   }
 
   render() {
     return (
-      <form className="form-cadastro"
-        onSubmit={this._criarNota.bind(this)}
-      >
+      // a propriedade onChange chama o metodo criado para efetuar a mudança de estado do objeto.
+      <form className="form-cadastro" onSubmit={this._criarNota.bind(this)}>
+        <select onChange={this._handleMudancaCategoria.bind(this)} className="form-cadastro_input">
+          
+          <option>Sem Categoria</option>
+
+            {this.props.categorias.map((categoria) =>{
+              return <option>{categoria}</option>
+            })}
+
+        </select>
+
         <input
           type="text"
           placeholder="Título"
           className="form-cadastro_input"
           onChange={this._handleMudancaTitulo.bind(this)}
         />
+
         <textarea
           rows={15}
           placeholder="Escreva sua nota..."
