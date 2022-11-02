@@ -11,39 +11,8 @@ class App extends Component {
     super();
     this.categorias = new Categorias();
     this.notas = new ArrayDeNotas();
-    
-    /*
-    this.state = {
-      notas: [],
-     // categorias: ["Games", "Música"],
-    };
-    */
 
   }
- 
-  /*
-  // seguindo a logica toda nota possui seus seguintes atributos ao serem criadas : titulo, texto, categoria, etc.
-  criarNota(titulo, texto, categoria) {
-    const novaNota = { titulo, texto, categoria };
-    const novoArrayNotas = [...this.state.notas, novaNota];
-    const novoEstado = {
-      notas: novoArrayNotas,
-    };
-    this.setState(novoEstado);
-  }
-
-  adicionarCategoria(nomeCategoria){
-    const novoArrayCategorias = [...this.state.categorias, nomeCategoria]
-    const novoEstado = {...this.state, categorias:novoArrayCategorias};
-    this.setState(novoEstado);
-  }
-
-  deletarNota(index) {
-    let arrayNotas = this.state.notas;
-    arrayNotas.splice(index, 1);
-    this.setState({ notas: arrayNotas });
-  }
- */
 
   render() {
     return (
